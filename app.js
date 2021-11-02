@@ -4,6 +4,7 @@ const db = require('./api/models')
   , config = require('./api/config')
   , fs = require('fs')
   , http = require('http')
+  , https = require('https')
   , jwtHelper = require('./api/helpers/jwt-helper')
   , path = require('path')
 ;
@@ -38,6 +39,12 @@ var options_object = {
     swaggerUi: '/explorer',
     swaggerUiPrefix: ''
   }
+};
+
+// This line is from the Node.js HTTPS documentation.
+var options_cert = {
+  key: fs.readFileSync('./certs/key.pem'),
+  cert: fs.readFileSync('./certs/cert.cert')
 };
 
 oasTools.configure(options_object);
@@ -75,7 +82,7 @@ function start(callback) {
       jwtHelper.initialize()
         .then(() => {
           oasTools.initialize(oasDoc, app, function() {
-            server = http.createServer(app);
+            server = config.https ? https.createServer(options_cert, app) : http.createServer(app);
             server.listen(serverPort, function() {
               console.log("App running at http://localhost:" + server.address().port);
               console.log("________________________________________________________________");

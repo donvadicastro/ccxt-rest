@@ -9,8 +9,6 @@ info:
   license:
     name: "MIT"
     url: "https://github.com/ccxt-rest/ccxt-rest/blob/master/LICENSE.txt"
-servers:
-  - url: 'http://localhost:3000/'
 tags:
   - name: Authentication API
     description: >-
