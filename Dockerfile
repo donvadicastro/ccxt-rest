@@ -19,6 +19,7 @@ RUN npm install -g /tmp/ccxt-rest-*.tgz --python=`which python` --no-save --unsa
 RUN rm /tmp/ccxt-rest-*.tgz
 
 ENV PORT 3000
+ENV HTTPS true
 
 EXPOSE 3000
 
