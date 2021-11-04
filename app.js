@@ -84,7 +84,7 @@ function start(callback) {
           oasTools.initialize(oasDoc, app, function() {
             server = config.https ? https.createServer(options_cert, app) : http.createServer(app);
             server.listen(serverPort, function() {
-              console.log("App running at http://localhost:" + server.address().port + ' using ' + config.https ? 'HTTPS' : 'HTTP' + ' protocol');
+              console.log("App running at " + (config.https ? 'https' : 'http') + "://localhost:" + server.address().port);
               console.log("________________________________________________________________");
               if (options_object.docs !== false) {
                 console.log('API docs (Swagger UI) available on http://localhost:' + server.address().port + '/explorer');
