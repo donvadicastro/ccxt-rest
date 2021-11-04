@@ -43,8 +43,8 @@ var options_object = {
 
 // This line is from the Node.js HTTPS documentation.
 var options_cert = {
-  key: fs.readFileSync('./certs/key.pem'),
-  cert: fs.readFileSync('./certs/cert.cert')
+  key: fs.readFileSync(path.join(__dirname, '/certs/key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, '/certs/cert.cert'))
 };
 
 oasTools.configure(options_object);
